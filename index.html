@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Tim Ott">
+		<meta name="description" content="architecture photographer based in switzerland">
+		<meta name="keywords" content="tim, ott, timott, timott.ch, architekturfotograf, architekturfotografie, architektur, architecture, schweiz, switzerland">
+		<meta name="google-site-verification" content="xSkSBxSqVInMOVCsHo_F6kJqnmHd_l0r-AQa3zJwH3k">
+		<meta name="robots" content="index, nofollow, noimageindex">
+		<meta name="googlebot" content="index, nofollow, noimageindex">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/png" href="./docs/docs_favicon.png">
+		<title>
+			tim ott
+		</title>
+		<style>
+			@font-face {
+				font-family: 'font';
+				src: url('docs/font/docs_font.eot');
+				src: url('docs/font/docs_font.eot?#iefix') format('embedded-opentype'),
+					url('docs/font/docs_font.woff2') format('woff2'),
+					url('docs/font/docs_font.woff') format('woff'),
+					url('docs/font/docs_font.ttf') format('truetype'),
+					url('docs/font/docs_font.svg#d-dinregular') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			::-webkit-scrollbar {
+				display: none;
+			}
+			* {
+				background-color: transparent;
+				padding: 0;
+				margin: 0;
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				font-family: "font";
+				text-transform: lowercase;
+				text-decoration: none;
+				color: black;
+				line-height: 1.2;
+			}
+			.overlay {
+				pointer-events: none;
+			}
+			.topleft, .bottomleft, .topright, .bottomright {
+				position: fixed;
+				z-index: 1;
+				height: 100px;
+			}
+			.topleft {
+				top: 0;
+				left: 0;
+			}
+			.bottomleft {
+				bottom: 0;
+				left: 0;
+			}
+			.topright {
+				width: 103px;
+				top: 0;
+				right: 0;
+			}
+			.bottomright {
+				width: 227.5px;
+				bottom: 0;
+				right: 0;
+			}
+			.overlay title, text {
+				pointer-events: all;
+				display: block;
+				height: 35px;
+				margin: 31.25px 0px 0px 32.5px;
+				font-size: 30px;
+			}
+			.overlay title, .overlay title:hover, .overlay text, .overlay text:hover, .overlay svg, .overlay svg:hover {
+				pointer-events: all;
+				transition: .3s;
+				-o-transition: .3s;
+				-ms-transition: .3s;
+				-moz-transition: .3s;
+				-webkit-transition: .3s;
+			}
+			.overlay text:hover {
+				color: #c0c0c0;
+			}
+			.overlay title {
+				width: calc(165px - 80px);
+			}
+			.overlay text {
+				width: calc(165px - 115px);
+			}
+			.overlay .icons {
+				margin: 31.25px 0px 0px 42px;
+			}
+			.overlay svg:hover {
+				fill: #c0c0c0;
+			}
+			.caption_locator {
+				pointer-events: none;
+				position: absolute;
+				opacity: 0%;
+				margin: 100px 35px 100px 35px;
+				transition: opacity .3s;
+				-o-transition: opacity .3s;
+				-ms-transition: opacity .3s;
+				-moz-transition: opacity .3s;
+				-webkit-transition: opacity .3s;
+			}
+			.caption {
+				background-color: rgba(0, 0, 0, .35);
+				display: none;
+				vertical-align: middle;
+				text-align: center;
+				font-size: 15px;
+				color: white;
+				width: inherit;
+				height: inherit;
+			}
+			.lightbox {
+				background-color: white;
+				position: fixed;
+				z-index: 2;
+				display: none;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+			}
+			.lightbox img {
+				background-color: transparent;
+				position: absolute;
+				z-index: 3;
+				max-width: calc(100% - 70px);
+				max-height: calc(100% - 200px);
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			.main {
+				z-index: 0;
+				padding: 100px 35px 100px 35px;
+			}
+			.main img {
+				vertical-align: bottom;
+			}
+			area {
+				display: block;
+				cursor: pointer;
+			}
+			.desktop {
+				pointer-events: all;
+			}
+			.mobile {
+				pointer-events: none;
+			}
+			@media screen and (max-width: 600px) {
+				.desktop, #desktop_only {
+					display: none !important;
+				}
+			}
+			@media screen and (min-width: 601px) {
+				.mobile, #mobile_only {
+					display: none !important;
+				}
+			}
+		</style>
+	</head>
+	<body oncontextmenu="return false" onpageshow="$('map').imageMapResize();">
+		<div class="overlay">
+			<div class="topleft">
+				<title>
+					tim ott
+				</title>
+			</div>
+			<div class="bottomleft">
+				<a href="info/">
+					<text>
+						info
+					</text>
+				</a>
+			</div>
+			<div class="bottomright">
+				<div class="icons">
+					<a onmouseover="style.cursor = 'pointer';" onclick="mail();">
+						<svg width="30" height="30" viewBox="-1 0 18 16" style="margin: 5px 0px 0px 0px;">
+							<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path>
+						</svg>
+					</a>
+					<a onmouseover="style.cursor = 'pointer';" onclick="tel();">
+						<svg width="28" height="28" viewBox="-1 0 18 16" style="margin: 0px 0px 1px 30px;">
+							<path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+						</svg>
+					</a>
+					<a href="https://www.instagram.com/timott.ch" target="_blank" rel="noopener noreferrer">
+						<svg width="28" height="28" viewBox="-2 -2 20 20" style="margin: 0px 0px 1px 30px;">
+							<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="main" id="main">
+			<div class="desktop" id="desktop">
+				<img src="docs/docs_overview_desktop.jpg" usemap="#desktop" width="100%" height="auto" title="" alt="">
+				<div class="caption_locator">
+					<div class="caption" id="caption">
+						caption
+					</div>
+				</div>
+				<map name="desktop">
+					<area shape="rect" coords="2057.143,0,2742.857,960" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'nord gmbh architekten';" onclick="iIndex = 0; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="960,137.143,1920,822.857" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'nord gmbh architekten';" onclick="iIndex = 1; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="1440,960,1920,1645.714" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'nord gmbh architekten';" onclick="iIndex = 2; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="0,1440,685.714,1920" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 3; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="0,2057.143,960,2742.857" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 4; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="274.286,2880,960,3360" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 5; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="1234.286,2400,1920,2880" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 6; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="2057.143,2400,2742.857,2880" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 7; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="1097.143,3017.143,2057.143,3702.857" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 8; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="2194.286,3360,2880,3840" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 9; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="137.143,3840,822.857,4320" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 10; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="960,3840,1645.714,4320" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 11; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="1782.857,3977.143,2742.857,4662.857" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 12; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="2057.143,4800,2742.857,5280" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'oubliettes';" onclick="iIndex = 13; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="0,5485.714,960,6171.429" onmouseover="captionHide();" onclick="iIndex = 14; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="137.143,6308.572,822.857,7268.571" onmouseover="captionHide();" onclick="iIndex = 15; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="960,6308.572,1440,6994.286" onmouseover="captionHide();" onclick="iIndex = 16; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="2400,6720,2880,7405.714" onmouseover="captionHide();" onclick="iIndex = 17; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="2194.286,7542.857,2880,8502.857" onmouseover="captionHide();" onclick="iIndex = 18; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="960,8160,1645.714,8640" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'fondation beyeler';" onclick="iIndex = 19; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="137.143,8640,822.857,9600" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'fondation beyeler';" onclick="iIndex = 20; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+					<area shape="rect" coords="960,8777.143,1920,9462.857" onmouseover="captionShow(), document.getElementById('caption').innerHTML = 'fondation beyeler';" onclick="iIndex = 21; lightboxOpen();" title="&#169; tim ott" alt="&#169; tim ott">
+				</map>
+			</div>
+			<div class="mobile">
+				<img src="docs/docs_overview_mobile.jpg" width="100%" height="auto" title="" alt="">
+			</div>
+		</div>
+		<div class="lightbox" id="lightbox">
+			<div class="overlay">
+				<div class="topright">
+					<div class="icons">
+						<a onmouseover="style.cursor = 'pointer';" onclick="lightboxClose();">
+							<svg width="32" height="32" viewBox="-1 -1 18 18" style="margin: 2px 0px 0px -1.5px;">
+								<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<a onmouseover="style.cursor = 'pointer';" onclick="lightboxClose();" title="&#169; tim ott" alt="&#169; tim ott">
+				<img id="lightboxSrc" src="">
+			</a>
+		</div>
+		<script src="docs/js/jquery.js">
+		</script>
+		<script src="docs/js/ie8.polyfil.js">
+		</script>
+		<script src="docs/js/imageMapResizer.min.js">
+		</script>
+		<script>
+			$('map').imageMapResize();
+		</script>
+		<script>
+			$(function() {
+				$('area').mouseenter(function() {
+					let coords = this.coords.split(',').map(a => a.trim())
+					$('.caption_locator').css({opacity: '100%', top: coords[1] + 'px', left: coords[0] + 'px', width: coords[2] - coords[0], height: coords[3] - coords[1]})
+				});
+				$('area').mouseleave(function() {
+					$('.caption_locator').css({opacity: '0%'})
+				});
+			});
+			function captionShow() {
+				document.getElementById('caption').style.display = 'table-cell';
+			}
+			function captionHide() {
+				document.getElementById('caption').style.display = 'none';
+			}
+		</script>
+		<script>
+			function lightboxOpen() {
+				var vEvent = {
+					keyCode : 38
+				};
+				fn_keydown(vEvent);
+				document.getElementsByTagName('*')[0].style.overflow = 'hidden';
+				document.getElementById('desktop').style.pointerEvents = 'none';
+				document.getElementById('main').style.opacity = '0';
+				document.getElementById('lightbox').style.display = 'block';
+				document.getElementById('lightbox').style.pointerEvents = 'all';
+			}
+			function lightboxClose() {
+				document.getElementsByTagName('*')[0].style.overflow = 'visible';
+				document.getElementById('desktop').style.pointerEvents = 'all';
+				document.getElementById('main').style.opacity = '100';
+				document.getElementById('lightbox').style.display = 'none';
+				document.getElementById('lightbox').style.pointerEvents = 'none';
+				document.getElementById('lightboxSrc').src='';
+			}
+			function mail() {
+				let encoded_mail = window.atob("dGltLm90dEBnbXguY2g");
+				document.location.href = "mailto:" + encoded_mail;
+			}
+			function tel() {
+				let encoded_tel = window.atob("KzQxNzg5MjM5MjEz");
+				document.location.href = "tel:" + encoded_tel;
+			}
+		</script>
+		<script>
+			var images = [
+				"docs/docs_000.jpg",
+				"docs/docs_001.jpg",
+				"docs/docs_002.jpg",
+				"docs/docs_003.jpg",
+				"docs/docs_004.jpg",
+				"docs/docs_005.jpg",
+				"docs/docs_006.jpg",
+				"docs/docs_007.jpg",
+				"docs/docs_008.jpg",
+				"docs/docs_009.jpg",
+				"docs/docs_010.jpg",
+				"docs/docs_011.jpg",
+				"docs/docs_012.jpg",
+				"docs/docs_013.jpg",
+				"docs/docs_014.jpg",
+				"docs/docs_015.jpg",
+				"docs/docs_016.jpg",
+				"docs/docs_017.jpg",
+				"docs/docs_018.jpg",
+				"docs/docs_019.jpg",
+				"docs/docs_020.jpg",
+				"docs/docs_021.jpg",
+			];
+			var iIndex;
+			var iLen = images.length;
+			window.onkeydown = fn_keydown;
+			function fn_keydown(event) {
+				var img = document.getElementById("lightboxSrc");
+				if (event.keyCode === 39) {
+					iIndex = (iIndex + 1) >= iLen ? 0 : iIndex + 1;
+				} else if (event.keyCode === 37) {
+					iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
+				}
+				img.setAttribute("src", images[iIndex]);
+			}
+		</script>
+	</body>
+</html>
