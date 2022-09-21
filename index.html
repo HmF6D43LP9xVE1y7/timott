@@ -48,7 +48,7 @@
 			.overlay {
 				pointer-events: none;
 			}
-			.topleft, .bottomleft, .topright, .bottomright {
+			.topleft, .topright, .centerleft, .centerright, .bottomleft, .bottomright {
 				position: fixed;
 				z-index: 1;
 				height: 100px;
@@ -57,14 +57,27 @@
 				top: 0;
 				left: 0;
 			}
-			.bottomleft {
-				bottom: 0;
-				left: 0;
-			}
 			.topright {
 				width: 103px;
 				top: 0;
 				right: 0;
+			}
+			.centerleft, .centerright {
+				position: absolute;
+				width: 105px;
+				top: 50%;
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			.centerleft {
+				left: 0;
+			}
+			.centerright {
+				right: 0;
+			}
+			.bottomleft {
+				bottom: 0;
+				left: 0;
 			}
 			.bottomright {
 				width: 227.5px;
@@ -136,7 +149,7 @@
 				background-color: transparent;
 				position: absolute;
 				z-index: 3;
-				max-width: calc(100% - 70px);
+				max-width: calc(100% - 200px);
 				max-height: calc(100% - 200px);
 				top: 50%;
 				left: 50%;
@@ -253,6 +266,24 @@
 						</a>
 					</div>
 				</div>
+				<div class="centerleft">
+					<div class="icons">
+						<a onmouseover="style.cursor = 'pointer';" onclick="lightboxBackward();">
+							<svg width="32" height="32" viewBox="-1 -1 18 18" style="margin: 2px 0px 0px -1.5px;">
+								<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+				<div class="centerright">
+					<div class="icons">
+						<a onmouseover="style.cursor = 'pointer';" onclick="lightboxForward();">
+							<svg width="32" height="32" viewBox="-1 -1 18 18" style="margin: 2px 0px 0px -1.5px;">
+								<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
 			</div>
 			<a onmouseover="style.cursor = 'pointer';" onclick="lightboxClose();" title="&#169; tim ott" alt="&#169; tim ott">
 				<img id="lightboxSrc" src="">
@@ -348,6 +379,16 @@
 				} else if (event.keyCode === 37) {
 					iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
 				}
+				img.setAttribute("src", images[iIndex]);
+			}
+			function lightboxForward() {
+				var img = document.getElementById("lightboxSrc");
+				iIndex = (iIndex + 1) >= iLen ? 0 : iIndex + 1;
+				img.setAttribute("src", images[iIndex]);
+			}
+			function lightboxBackward() {
+				var img = document.getElementById("lightboxSrc");
+				iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
 				img.setAttribute("src", images[iIndex]);
 			}
 		</script>
