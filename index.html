@@ -114,7 +114,7 @@
 			.overlay svg:hover {
 				fill: #c0c0c0;
 			}
-			.caption_locator {
+			.captionLocator {
 				pointer-events: none;
 				position: absolute;
 				opacity: 0%;
@@ -173,12 +173,12 @@
 				pointer-events: none;
 			}
 			@media screen and (max-width: 600px) {
-				.desktop, #desktop_only {
+				.desktop {
 					display: none !important;
 				}
 			}
 			@media screen and (min-width: 601px) {
-				.mobile, #mobile_only {
+				.mobile {
 					display: none !important;
 				}
 			}
@@ -220,8 +220,8 @@
 		</div>
 		<div class="main" id="main">
 			<div class="desktop" id="desktop">
-				<img src="docs/docs_overview_desktop.jpg" usemap="#desktop" width="100%" height="auto" title="" alt="">
-				<div class="caption_locator">
+				<img id="desktopSrc" src="" usemap="#desktop" width="100%" height="auto" title="" alt="">
+				<div class="captionLocator">
 					<div class="caption" id="caption">
 						caption
 					</div>
@@ -252,7 +252,7 @@
 				</map>
 			</div>
 			<div class="mobile">
-				<img src="docs/docs_overview_mobile.jpg" width="100%" height="auto" title="" alt="">
+				<img id="mobileSrc" src="" width="100%" height="auto" title="" alt="">
 			</div>
 		</div>
 		<div class="lightbox" id="lightbox">
@@ -296,16 +296,20 @@
 		<script src="docs/js/imageMapResizer.min.js">
 		</script>
 		<script>
+			var desktopSrc = document.getElementById("desktopSrc");
+			var mobileSrc = document.getElementById("mobileSrc");
+			let encodedDesktopSrc = window.atob("ZG9jcy9kb2NzX292ZXJ2aWV3X2Rlc2t0b3AuanBn");
+			let encodedMobileSrc = window.atob("ZG9jcy9kb2NzX292ZXJ2aWV3X21vYmlsZS5qcGc=");
+			desktopSrc.setAttribute("src", encodedDesktopSrc);
+			mobileSrc.setAttribute("src", encodedMobileSrc);
 			$('map').imageMapResize();
-		</script>
-		<script>
 			$(function() {
 				$('area').mouseenter(function() {
 					let coords = this.coords.split(',').map(a => a.trim())
-					$('.caption_locator').css({opacity: '100%', top: coords[1] + 'px', left: coords[0] + 'px', width: coords[2] - coords[0], height: coords[3] - coords[1]})
+					$('.captionLocator').css({opacity: '100%', top: coords[1] + 'px', left: coords[0] + 'px', width: coords[2] - coords[0], height: coords[3] - coords[1]})
 				});
 				$('area').mouseleave(function() {
-					$('.caption_locator').css({opacity: '0%'})
+					$('.captionLocator').css({opacity: '0%'})
 				});
 			});
 			function captionShow() {
@@ -314,8 +318,6 @@
 			function captionHide() {
 				document.getElementById('caption').style.display = 'none';
 			}
-		</script>
-		<script>
 			function lightboxOpen() {
 				var vEvent = {
 					keyCode : 38
@@ -335,61 +337,62 @@
 				document.getElementById('lightbox').style.pointerEvents = 'none';
 				document.getElementById('lightboxSrc').src='';
 			}
-			function mail() {
-				let encoded_mail = window.atob("dGltLm90dEBnbXguY2g");
-				document.location.href = "mailto:" + encoded_mail;
-			}
-			function tel() {
-				let encoded_tel = window.atob("KzQxNzg5MjM5MjEz");
-				document.location.href = "tel:" + encoded_tel;
-			}
-		</script>
-		<script>
 			var images = [
-				"docs/docs_000.jpg",
-				"docs/docs_001.jpg",
-				"docs/docs_002.jpg",
-				"docs/docs_003.jpg",
-				"docs/docs_004.jpg",
-				"docs/docs_005.jpg",
-				"docs/docs_006.jpg",
-				"docs/docs_007.jpg",
-				"docs/docs_008.jpg",
-				"docs/docs_009.jpg",
-				"docs/docs_010.jpg",
-				"docs/docs_011.jpg",
-				"docs/docs_012.jpg",
-				"docs/docs_013.jpg",
-				"docs/docs_014.jpg",
-				"docs/docs_015.jpg",
-				"docs/docs_016.jpg",
-				"docs/docs_017.jpg",
-				"docs/docs_018.jpg",
-				"docs/docs_019.jpg",
-				"docs/docs_020.jpg",
-				"docs/docs_021.jpg",
+				"ZG9jcy9kb2NzXzAwMC5qcGc=",
+				"ZG9jcy9kb2NzXzAwMS5qcGc=",
+				"ZG9jcy9kb2NzXzAwMi5qcGc=",
+				"ZG9jcy9kb2NzXzAwMy5qcGc=",
+				"ZG9jcy9kb2NzXzAwNC5qcGc=",
+				"ZG9jcy9kb2NzXzAwNS5qcGc=",
+				"ZG9jcy9kb2NzXzAwNi5qcGc=",
+				"ZG9jcy9kb2NzXzAwNy5qcGc=",
+				"ZG9jcy9kb2NzXzAwOC5qcGc=",
+				"ZG9jcy9kb2NzXzAwOS5qcGc=",
+				"ZG9jcy9kb2NzXzAxMC5qcGc=",
+				"ZG9jcy9kb2NzXzAxMS5qcGc=",
+				"ZG9jcy9kb2NzXzAxMi5qcGc=",
+				"ZG9jcy9kb2NzXzAxMy5qcGc=",
+				"ZG9jcy9kb2NzXzAxNC5qcGc=",
+				"ZG9jcy9kb2NzXzAxNS5qcGc=",
+				"ZG9jcy9kb2NzXzAxNi5qcGc=",
+				"ZG9jcy9kb2NzXzAxNy5qcGc=",
+				"ZG9jcy9kb2NzXzAxOC5qcGc=",
+				"ZG9jcy9kb2NzXzAxOS5qcGc=",
+				"ZG9jcy9kb2NzXzAyMC5qcGc=",
+				"ZG9jcy9kb2NzXzAyMS5qcGc=",
 			];
 			var iIndex;
 			var iLen = images.length;
 			window.onkeydown = fn_keydown;
 			function fn_keydown(event) {
-				var img = document.getElementById("lightboxSrc");
+				var lightboxSrc = document.getElementById("lightboxSrc");
 				if (event.keyCode === 39) {
 					iIndex = (iIndex + 1) >= iLen ? 0 : iIndex + 1;
 				} else if (event.keyCode === 37) {
 					iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
 				}
-				img.setAttribute("src", images[iIndex]);
+				let encodedLightboxSrc = window.atob(images[iIndex]);
+				lightboxSrc.setAttribute("src", encodedLightboxSrc);
 			}
 			function lightboxForward() {
-				var img = document.getElementById("lightboxSrc");
+				var lightboxSrc = document.getElementById("lightboxSrc");
 				iIndex = (iIndex + 1) >= iLen ? 0 : iIndex + 1;
-				img.setAttribute("src", images[iIndex]);
+				let encodedLightboxSrc = window.atob(images[iIndex]);
+				lightboxSrc.setAttribute("src", encodedLightboxSrc);
 			}
 			function lightboxBackward() {
-				var img = document.getElementById("lightboxSrc");
+				var lightboxSrc = document.getElementById("lightboxSrc");
 				iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
-				img.setAttribute("src", images[iIndex]);
+				let encodedLightboxSrc = window.atob(images[iIndex]);
+				lightboxSrc.setAttribute("src", encodedLightboxSrc);
+			}
+			function mail() {
+				let encodedMail = window.atob("dGltLm90dEBnbXguY2g");
+				document.location.href = "mailto:" + encodedMail;
+			}
+			function tel() {
+				let encodedTel = window.atob("KzQxNzg5MjM5MjEz");
+				document.location.href = "tel:" + encodedTel;
 			}
 		</script>
 	</body>

@@ -163,15 +163,6 @@
 				Schweiz sowie dem angrenzenden Ausland f&#x00FC;r Ihre Auftr&#x00E4;ge verf&#x00FC;gbar.
 			</text>
 		</div>
-		<script>
-			function mail() {
-				let encoded_mail = window.atob("dGltLm90dEBnbXguY2g");
-				document.location.href = "mailto:" + encoded_mail;
-			}
-			function tel() {
-				let encoded_tel = window.atob("KzQxNzg5MjM5MjEz");
-				document.location.href = "tel:" + encoded_tel;
-			}
 		</script>
 		<script src="docs/js/jquery.js">
 		</script>
@@ -181,6 +172,14 @@
 		</script>
 		<script>
 			$('map').imageMapResize();
+			function mail() {
+				let encodedMail = window.atob("dGltLm90dEBnbXguY2g");
+				document.location.href = "mailto:" + encodedMail;
+			}
+			function tel() {
+				let encodedTel = window.atob("KzQxNzg5MjM5MjEz");
+				document.location.href = "tel:" + encodedTel;
+			}
 		</script>
 	</body>
 </html>
