@@ -220,7 +220,7 @@
 		</div>
 		<div class="main" id="main">
 			<div class="desktop" id="desktop">
-				<img id="desktopSrc" src="" usemap="#desktop" width="100%" height="auto" title="" alt="">
+				<img src="docs/docs_overview_desktop.jpg" usemap="#desktop" width="100%" height="auto" title="" alt="">
 				<div class="captionLocator">
 					<div class="caption" id="caption">
 						caption
@@ -252,7 +252,7 @@
 				</map>
 			</div>
 			<div class="mobile">
-				<img id="mobileSrc" src="" width="100%" height="auto" title="" alt="">
+				<img src="docs/docs_overview_mobile.jpg" width="100%" height="auto" title="" alt="">
 			</div>
 		</div>
 		<div class="lightbox" id="lightbox">
@@ -296,12 +296,6 @@
 		<script src="docs/js/imageMapResizer.min.js">
 		</script>
 		<script>
-			var desktopSrc = document.getElementById("desktopSrc");
-			var mobileSrc = document.getElementById("mobileSrc");
-			let encodedDesktopSrc = window.atob("ZG9jcy9kb2NzX292ZXJ2aWV3X2Rlc2t0b3AuanBn");
-			let encodedMobileSrc = window.atob("ZG9jcy9kb2NzX292ZXJ2aWV3X21vYmlsZS5qcGc=");
-			desktopSrc.setAttribute("src", encodedDesktopSrc);
-			mobileSrc.setAttribute("src", encodedMobileSrc);
 			$('map').imageMapResize();
 			$(function() {
 				$('area').mouseenter(function() {
@@ -338,28 +332,28 @@
 				document.getElementById('lightboxSrc').src='';
 			}
 			var images = [
-				"ZG9jcy9kb2NzXzAwMC5qcGc=",
-				"ZG9jcy9kb2NzXzAwMS5qcGc=",
-				"ZG9jcy9kb2NzXzAwMi5qcGc=",
-				"ZG9jcy9kb2NzXzAwMy5qcGc=",
-				"ZG9jcy9kb2NzXzAwNC5qcGc=",
-				"ZG9jcy9kb2NzXzAwNS5qcGc=",
-				"ZG9jcy9kb2NzXzAwNi5qcGc=",
-				"ZG9jcy9kb2NzXzAwNy5qcGc=",
-				"ZG9jcy9kb2NzXzAwOC5qcGc=",
-				"ZG9jcy9kb2NzXzAwOS5qcGc=",
-				"ZG9jcy9kb2NzXzAxMC5qcGc=",
-				"ZG9jcy9kb2NzXzAxMS5qcGc=",
-				"ZG9jcy9kb2NzXzAxMi5qcGc=",
-				"ZG9jcy9kb2NzXzAxMy5qcGc=",
-				"ZG9jcy9kb2NzXzAxNC5qcGc=",
-				"ZG9jcy9kb2NzXzAxNS5qcGc=",
-				"ZG9jcy9kb2NzXzAxNi5qcGc=",
-				"ZG9jcy9kb2NzXzAxNy5qcGc=",
-				"ZG9jcy9kb2NzXzAxOC5qcGc=",
-				"ZG9jcy9kb2NzXzAxOS5qcGc=",
-				"ZG9jcy9kb2NzXzAyMC5qcGc=",
-				"ZG9jcy9kb2NzXzAyMS5qcGc=",
+				"docs/docs_000.jpg",
+				"docs/docs_001.jpg",
+				"docs/docs_002.jpg",
+				"docs/docs_003.jpg",
+				"docs/docs_004.jpg",
+				"docs/docs_005.jpg",
+				"docs/docs_006.jpg",
+				"docs/docs_007.jpg",
+				"docs/docs_008.jpg",
+				"docs/docs_009.jpg",
+				"docs/docs_010.jpg",
+				"docs/docs_011.jpg",
+				"docs/docs_012.jpg",
+				"docs/docs_013.jpg",
+				"docs/docs_014.jpg",
+				"docs/docs_015.jpg",
+				"docs/docs_016.jpg",
+				"docs/docs_017.jpg",
+				"docs/docs_018.jpg",
+				"docs/docs_019.jpg",
+				"docs/docs_020.jpg",
+				"docs/docs_021.jpg",
 			];
 			var iIndex;
 			var iLen = images.length;
@@ -371,20 +365,17 @@
 				} else if (event.keyCode === 37) {
 					iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
 				}
-				let encodedLightboxSrc = window.atob(images[iIndex]);
-				lightboxSrc.setAttribute("src", encodedLightboxSrc);
+				lightboxSrc.setAttribute("src", images[iIndex]);
 			}
 			function lightboxForward() {
 				var lightboxSrc = document.getElementById("lightboxSrc");
 				iIndex = (iIndex + 1) >= iLen ? 0 : iIndex + 1;
-				let encodedLightboxSrc = window.atob(images[iIndex]);
-				lightboxSrc.setAttribute("src", encodedLightboxSrc);
+				lightboxSrc.setAttribute("src", images[iIndex]);
 			}
 			function lightboxBackward() {
 				var lightboxSrc = document.getElementById("lightboxSrc");
 				iIndex = (iIndex - 1) < 0 ? iLen-1 : iIndex - 1;
-				let encodedLightboxSrc = window.atob(images[iIndex]);
-				lightboxSrc.setAttribute("src", encodedLightboxSrc);
+				lightboxSrc.setAttribute("src", images[iIndex]);
 			}
 			function mail() {
 				let encodedMail = window.atob("dGltLm90dEBnbXguY2g");
