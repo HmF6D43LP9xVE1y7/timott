@@ -132,6 +132,26 @@
 			.main text {
 				font-size: 15px;
 			}
+			.anim {
+				opacity: 0;
+				animation: anim;
+				animation-duration: 1s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+				animation-timing-function: ease;
+			}
+			.animDelay {
+				animation-delay: .2s;
+			}
+			@keyframes anim {
+				from {
+					transform: translateY(35px);
+					opacity: 0;
+				} to {
+					transform: translateY(0px);
+					opacity: 1;
+				}
+			}
 		</style>
 	</head>
 	<body oncontextmenu="return false">
@@ -171,7 +191,7 @@
 			</div>
 		</div>
 		<div class="main">
-			<text>
+			<text class="anim">
 				After completing the four - year apprenticeship as a photographer with the
 				federal diploma of vocational education and training at the F+F Schule f&#x00FC;r Kunst
 				und Design in Z&#x00FC;rich, with prior attendance of the one - year preliminary course
@@ -180,7 +200,7 @@
 				projects of longer duration. Available for your inquiries throughout switzerland
 				and adjacent countries.
 			</text>
-			<text>
+			<text class="anim">
 				Nach Abschluss der vierj&#x00E4;hrigen Ausbildung zum Fotograf EFZ an der F+F Schule
 				f&#x00FC;r Kunst und Design in Z&#x00FC;rich, mit vorangehendem Besuch des einj&#x00E4;hrigen
 				Vorkurses an der Schule f&#x00FC;r Gestaltung in Basel, bet&#x00E4;tige ich mich seither als
@@ -188,10 +208,10 @@
 				nebenbei eigenen, konzeptuellen Projekten von l&#x00E4;ngerer Dauer. In der gesamten
 				Schweiz sowie dem angrenzenden Ausland f&#x00FC;r Ihre Auftr&#x00E4;ge verf&#x00FC;gbar.
 			</text>
-			<title>
+			<title class="anim animDelay">
 				oubliettes
 			</title>
-			<text>
+			<text class="anim animDelay">
 				The concept of liminality how it is often, albeit sometimes unintentionally, used
 				in computer games to express an eerie mood, describes places where there is a
 				lack of identification with the environment due to the absence of humans.
@@ -201,7 +221,7 @@
 				existence and significant contribution to today's society is sometimes forgotten
 				and the lack of scale to the familiar seems to lift these premises out of reality.
 			</text>
-			<text>
+			<text class="anim animDelay">
 				Das Konzept der Liminalit&#x00E4;t wie es in Computerspielen oftmals, wenn auch teils
 				unabsichtlich, zum Ausdruck einer unheimlichen Stimmung eingesetzt wird,
 				beschreibt Orte an welchen es durch die Abwesenheit von Menschen an einer

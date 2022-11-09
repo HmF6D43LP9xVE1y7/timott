@@ -193,6 +193,38 @@
 			.mobile {
 				pointer-events: none;
 			}
+			.anim {
+				opacity: 0;
+				animation: anim;
+				animation-duration: 1s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+				animation-timing-function: ease;
+			}
+			.animLightbox {
+				opacity: 0;
+				animation: animLightbox;
+				animation-duration: 1s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+				animation-timing-function: ease;
+			}
+			@keyframes anim {
+				from {
+					transform: translateY(35px);
+					opacity: 0;
+				} to {
+					transform: translateY(0px);
+					opacity: 1;
+				}
+			}
+			@keyframes animLightbox {
+				from {
+					opacity: 0;
+				} to {
+					opacity: 1;
+				}
+			}
 			@media screen and (max-width: 600px) {
 				.desktop {
 					display: none !important;
@@ -239,7 +271,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="main" id="main">
+		<div class="main anim" id="main">
 			<div class="desktop" id="desktop">
 				<img src="docs/docs_overview_desktop.jpg" usemap="#desktop" width="100%" height="auto" title="" alt="">
 				<div class="captionLocator">
@@ -306,7 +338,7 @@
 				</div>
 			</div>
 			<a onmouseover="style.cursor = 'pointer';" onclick="lightboxClose();" title="&#169; tim ott" alt="&#169; tim ott">
-				<img id="lightboxSrc" src="">
+				<img class="animLightbox" id="lightboxSrc" src="">
 			</a>
 		</div>
 		<script src="docs/js/jquery.js">
