@@ -1,1 +1,7 @@
-.overlay title:hover{color:#c0c0c0}.main{padding:0 calc(100vw - 565px) 0 0;margin:100px 35px 100px 0}
+.overlay title:hover {
+    color: #c0c0c0;
+}
+.main {
+    padding: 0 calc(100vw - 565px) 0 0;
+    margin: 100px 35px 100px 0;
+}
