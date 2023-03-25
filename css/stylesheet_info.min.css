@@ -1,1 +1,1 @@
-.title:hover{color:#c0c0c0}.main{margin:66px 35px 94px 34px}
+@media screen and (max-width: 1025px){.main{margin:66px 35px 94px 34px;overflow-y:hidden}.responsive{padding:35px calc(100vw - 565px) 0 0}}@media screen and (min-width: 1026px){.main{margin:66px 70px 94px 34px;overflow-y:hidden;width:100vw}.responsive{padding:35px 35px 0 0;float:left}}
